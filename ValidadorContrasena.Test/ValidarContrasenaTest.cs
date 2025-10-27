@@ -92,27 +92,14 @@ public class ValidarContrasenaTest
     }
     
     //Segunda iteracion
-    [Fact]
-    
-    public void Si_ContrasenaTieneMasDe6Caracteres_Debe_RetornarTrue()
+    [Theory]
+    [InlineData("xxxxxxxx", 6)]
+    [InlineData("xxxxxxxxxxxxxxxxx", 16)]
+    public void Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue(string contrasena, int cantidadDigitos)
     {
         //Arrange
-        ValidarContrasena validarContrasena =  new ValidarContrasena("xxxxxxx");
-        validarContrasena.CantidadCaracteres = 6;
-        
-        //Act
-        bool contrasenaValida = validarContrasena.CantidadCaracteresValida();
-        //Assert
-        contrasenaValida.Should().BeTrue();
-    }
-    
-    [Fact]
-    
-    public void Si_ContrasenaTieneMasDe16Caracteres_Debe_RetornarTrue()
-    {
-        //Arrange
-        ValidarContrasena validarContrasena =  new ValidarContrasena("xxxxxxxxxxxxxxxxxxxxxxx");
-        validarContrasena.CantidadCaracteres = 16;
+        ValidarContrasena validarContrasena =  new ValidarContrasena(contrasena);
+        validarContrasena.CantidadCaracteres = cantidadDigitos;
         
         //Act
         bool contrasenaValida = validarContrasena.CantidadCaracteresValida();
