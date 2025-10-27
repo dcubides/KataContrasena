@@ -52,6 +52,19 @@ public class ValidarContrasenaTest
         //Assert
         contrasenaValida.Should().BeTrue();
     }
+
+    [Fact]
+    public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero()
+    {
+        //Arrange
+        ValidarContrasena validarContrasena = new ValidarContrasena("Xxxxx");
+        //Act
+        bool contrasenaValida = validarContrasena.ContieneNumero();
+        
+        //Assert
+        contrasenaValida.Should().BeTrue();
+
+    }
 }
 
 public class ValidarContrasena
@@ -83,5 +96,10 @@ public class ValidarContrasena
     public bool ContieneLetraMinuscula()
     {
         return _contrasena.Any(char.IsLower);
+    }
+
+    public bool ContieneNumero()
+    {
+        throw new NotImplementedException();
     }
 }
