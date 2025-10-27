@@ -28,7 +28,7 @@ public static class ValidarContrasenaFactory
             new ReglaContieneGuionBajo(),
         };
         
-        return new ValidadorContrasena(reglas);
+        return new ValidadorContrasena(reglas, new EstrategiaPermiteUnaFalla());
     }
     public static ValidadorContrasena CrearValidadorDos()
     {
@@ -40,7 +40,7 @@ public static class ValidarContrasenaFactory
             new ReglaContieneNumero(),
         };
         
-        return new ValidadorContrasena(reglas);
+        return new ValidadorContrasena(reglas, new EstrategiaPermiteUnaFalla());
     }
 
     public static ValidadorContrasena CrearValidadorTres()
@@ -53,6 +53,6 @@ public static class ValidarContrasenaFactory
             new ReglaContieneGuionBajo(),
         };
         
-        return new ValidadorContrasena(reglas);
+        return new ValidadorContrasena(reglas, new EstrategiaPermiteUnaFalla());
     }
 }

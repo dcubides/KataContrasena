@@ -120,7 +120,7 @@ public class ValidarContrasenaTest
             new ReglaLongitudContrasena(8)
         };
         
-        var validador = new ValidadorContrasena(reglas);
+        var validador = new ValidadorContrasena(reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("xxxxxxxxx");
@@ -143,7 +143,7 @@ public class ValidarContrasenaTest
             new ReglaContieneGuionBajo()
         };
         
-        var validador = new ValidadorContrasena(reglas);
+        var validador = new ValidadorContrasena(reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxx1234_");
@@ -164,7 +164,7 @@ public class ValidarContrasenaTest
             new ReglaContieneNumero(),
         };
         
-        var validador = new ValidadorContrasena(reglas);
+        var validador = new ValidadorContrasena(reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxx123_");
@@ -185,7 +185,7 @@ public class ValidarContrasenaTest
             new ReglaContieneGuionBajo(),
         };
         
-        var validador = new ValidadorContrasena(reglas);
+        var validador = new ValidadorContrasena(reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxx123_");
@@ -234,7 +234,8 @@ public class ValidarContrasenaTest
             new ReglaContieneNumero(),
             new ReglaContieneGuionBajo(),
         };
-        var validador = new ValidadorContrasena(reglas);
+        var estrategia = new EstrategiaCumpleTodasLasReglas();
+        var validador = new ValidadorContrasena(reglas, estrategia);
 
         //Act
         var contrasenaValida = validador.Validar("xxx");
@@ -243,6 +244,30 @@ public class ValidarContrasenaTest
         contrasenaValida.EsValida.Should().BeFalse();
         contrasenaValida.Errores.Should().Contain("La contraseña debe contener almenos un numero");
         contrasenaValida.Errores.Should().Contain("La contraseña debe contener almenos una letra mayuscula");
+    }
+
+    [Fact]
+    public void Si_ContrasenaCumpleTodasLasReglasMenosUna_Debe_RetornarTrue()
+    {
+        //Arrange
+        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
+        {
+            new ReglaLongitudContrasena(8),
+            new ReglaContieneLetraMayuscula(),
+            new ReglaContieneNumero(),
+            new ReglaContieneGuionBajo(),
+        };
+        
+        var estrategia = new EstrategiaPermiteUnaFalla();
+        
+        var validador = new ValidadorContrasena(reglas, estrategia);
+        
+        //Act
+        var contrasenaValida = validador.Validar("Xxxxxx123");
+        
+        //Assert
+        contrasenaValida.EsValida.Should().BeTrue();
+        contrasenaValida.Errores.Should().Contain("La contraseña debe contener un guion bajo");
     }
     
 }
