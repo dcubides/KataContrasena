@@ -105,6 +105,20 @@ public class ValidarContrasenaTest
         //Assert
         contrasenaValida.Should().BeTrue();
     }
+    
+    [Fact]
+    
+    public void Si_ContrasenaTieneMasDe16Caracteres_Debe_RetornarTrue()
+    {
+        //Arrange
+        ValidarContrasena validarContrasena =  new ValidarContrasena("xxxxxxx");
+        validarContrasena.CantidadCaracteres = 16;
+        
+        //Act
+        bool contrasenaValida = validarContrasena.CantidadCaracteresValida();
+        //Assert
+        contrasenaValida.Should().BeTrue();
+    }
 }
 
 
