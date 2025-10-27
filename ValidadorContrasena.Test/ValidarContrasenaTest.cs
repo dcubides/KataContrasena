@@ -8,15 +8,17 @@ namespace KataContrasena.Test;
 
 public class ValidarContrasenaTest
 {
+    private readonly List<IReglasDeValidacion> _reglas;
+    public ValidarContrasenaTest()
+    {
+        _reglas = new();
+    }
     [Fact]
     public void Si_IngresaContrasena_Debe_RetornarTrueSiNoEsVacia()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaNoEsVacia()
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaNoEsVacia());
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("xxxxx");
@@ -29,14 +31,12 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneMasDeOchoCaracteres()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaLongitudContrasena(8)
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaLongitudContrasena(8));
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("xxxxxxxxx");
+        
         //Assert
         contrasenaValida.Should().BeTrue();
     }
@@ -45,11 +45,8 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMayuscula()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaContieneLetraMayuscula()
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaContieneLetraMayuscula());
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxxxxxx");
@@ -61,11 +58,8 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMinuscula()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaContieneLetraMinuscula()
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaContieneLetraMinuscula());
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("xxxxxxxx");
@@ -77,11 +71,8 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaContieneLetraMinuscula()
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaContieneNumero());
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("xxxxxxxx5");
@@ -93,11 +84,8 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnGuionBajo()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaContieneGuionBajo()
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaContieneGuionBajo());
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("xxxxxxxx5_");
@@ -109,16 +97,17 @@ public class ValidarContrasenaTest
     public void Si_ContrasenaCumpleConTodasLasValidaciones_Debe_RetornarTrue()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
+      
+        _reglas.AddRange(
             new ReglaNoEsVacia(),
             new ReglaLongitudContrasena(8),
             new ReglaContieneLetraMayuscula(),
             new ReglaContieneLetraMinuscula(),
             new ReglaContieneNumero(),
             new ReglaContieneGuionBajo()
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        );
+        
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxxxxxx5_");
@@ -133,11 +122,8 @@ public class ValidarContrasenaTest
     public void Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue(string contrasena, int cantidadDigitos)
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaLongitudContrasena(cantidadDigitos)
-        };
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaLongitudContrasena(cantidadDigitos));
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida(contrasena);
@@ -150,12 +136,8 @@ public class ValidarContrasenaTest
     public void Si_ContrasenaCumpleConUnaListaDeUnaRegla_Debe_RetornarTrue()
     {   
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaLongitudContrasena(8)
-        };
-        
-        var validador = new ValidadorContrasena(reglas, null);
+        _reglas.Add(new ReglaLongitudContrasena(8));
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("xxxxxxxxx");
@@ -168,17 +150,15 @@ public class ValidarContrasenaTest
     public void Si_ContrasenaCumpleConUnaListaDeNReglas_Debe_RetornarTrue()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
+        _reglas.AddRange(
             new ReglaNoEsVacia(),
             new ReglaLongitudContrasena(8),
             new ReglaContieneLetraMayuscula(),
             new ReglaContieneLetraMinuscula(),
             new ReglaContieneNumero(),
-            new ReglaContieneGuionBajo()
-        };
+            new ReglaContieneGuionBajo());
         
-        var validador = new ValidadorContrasena(reglas, null);
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxx1234_");
@@ -191,15 +171,13 @@ public class ValidarContrasenaTest
     public void Si_ValidacionEs2Contrasena_Debe_Validar6CaracteresLetraMayusculaLetraMinusculaYUnNumero()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
+        _reglas.AddRange(
             new ReglaLongitudContrasena(6),
             new ReglaContieneLetraMayuscula(),
             new ReglaContieneLetraMinuscula(),
-            new ReglaContieneNumero(),
-        };
-        
-        var validador = new ValidadorContrasena(reglas, null);
+            new ReglaContieneNumero()
+        );
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxx123_");
@@ -212,18 +190,15 @@ public class ValidarContrasenaTest
     public void Si_ValidacionEs3Contrasena_Debe_Validar16CaracteresLetraMayusculaLetraMinusculaYUnGuionBajo()
     {
         //Arrange
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
-        {
-            new ReglaLongitudContrasena(6),
+        _reglas.AddRange(
+            new ReglaLongitudContrasena(16),
             new ReglaContieneLetraMayuscula(),
             new ReglaContieneLetraMinuscula(),
-            new ReglaContieneGuionBajo(),
-        };
-        
-        var validador = new ValidadorContrasena(reglas, null);
+            new ReglaContieneGuionBajo());
+        var validador = new ValidadorContrasena(_reglas, null);
         
         //Act
-        bool contrasenaValida = validador.EsValida("Xxxx123_");
+        bool contrasenaValida = validador.EsValida("Xxxxxxxxxxxxx123_");
         
         //Assert
         contrasenaValida.Should().BeTrue();
@@ -269,6 +244,7 @@ public class ValidarContrasenaTest
             new ReglaContieneNumero(),
             new ReglaContieneGuionBajo(),
         };
+       
         var estrategia = new EstrategiaCumpleTodasLasReglas();
         var validador = new ValidadorContrasena(reglas, estrategia);
 
