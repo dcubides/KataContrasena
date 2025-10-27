@@ -32,6 +32,9 @@ public class ValidarContrasenaTest
 public class ValidarContrasena
 {
     private readonly string _contrasena;
+    
+    private const int CantidadCaracteres = 8;
+    
     public ValidarContrasena(string contrasena)
     { 
         _contrasena =  contrasena;
@@ -44,6 +47,6 @@ public class ValidarContrasena
 
     public bool CantidadCaracteresValida()
     {
-        return true;
+        return _contrasena.Length > CantidadCaracteres;
     }
 }
