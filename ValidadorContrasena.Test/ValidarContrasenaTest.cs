@@ -163,7 +163,7 @@ public class ValidarContrasenaTest
         var validador = new ValidadorContrasena(reglas);
         
         //Act
-        bool contrasenaValida = validador.EsValida("Xxxx_");
+        bool contrasenaValida = validador.EsValida("Xxxx123_");
         
         //Assert
         contrasenaValida.Should().BeTrue();
