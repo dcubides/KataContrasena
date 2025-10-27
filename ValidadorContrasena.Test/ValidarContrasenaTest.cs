@@ -4,11 +4,16 @@ namespace KataContrasena.Test;
 
 public class ValidarContrasenaTest
 {
+    private ValidarContrasena validarContrasena;
+    public ValidarContrasenaTest()
+    {
+        validarContrasena = new ValidarContrasena("Xx1_xxxxxx");
+    }
     [Fact]
     public void Si_IngresaContrasena_Debe_RetornarTrueSiNoEsVacia()
     {
         //Arrange
-        ValidarContrasena validarContrasena = new ValidarContrasena("xxx");
+        
         //Act
         bool contrasenaValida = validarContrasena.NoEstaVacia();
         
@@ -20,7 +25,7 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneMasDeOchoCaracteres()
     {
         //Arrange
-        ValidarContrasena validarContrasena = new ValidarContrasena("xxxxxxxxx");
+        
         //Act
         bool contrasenaValida = validarContrasena.CantidadCaracteresValida();
         
@@ -32,7 +37,7 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMayuscula()
     {
         //Arrange
-        ValidarContrasena validarContrasena = new ValidarContrasena("Xxxxx");
+        
         //Act
         bool contrasenaValida = validarContrasena.ContieneLetraMayuscula();
         
@@ -44,7 +49,6 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMinuscula()
     {
         //Arrange
-        ValidarContrasena  validarContrasena = new ValidarContrasena("Xxxxx");
         
         //Act
         bool contrasenaValida = validarContrasena.ContieneLetraMinuscula();
@@ -57,7 +61,7 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero()
     {
         //Arrange
-        ValidarContrasena validarContrasena = new ValidarContrasena("Xxxx1");
+        
         //Act
         bool contrasenaValida = validarContrasena.ContieneNumero();
         
@@ -69,7 +73,7 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnGuionBajo()
     {
         //Arrange
-        ValidarContrasena validarContrasena = new ValidarContrasena("Xxxx1_");
+
         //Act
         bool contrasenaValida = validarContrasena.ContieneUnGuion();
         //Assert
@@ -88,33 +92,14 @@ public class ValidarContrasena
         _contrasena =  contrasena;
     }
 
-    public bool NoEstaVacia()
-    {
-        return !string.IsNullOrEmpty(_contrasena);
-    }
+    public bool NoEstaVacia() => !string.IsNullOrEmpty(_contrasena);
+    public bool CantidadCaracteresValida() => _contrasena.Length > CantidadCaracteres;
 
-    public bool CantidadCaracteresValida()
-    {
-        return _contrasena.Length > CantidadCaracteres;
-    }
+    public bool ContieneLetraMayuscula() => _contrasena.Any(char.IsUpper);
 
-    public bool ContieneLetraMayuscula()
-    {
-        return _contrasena.Any(char.IsUpper);
-    }
+    public bool ContieneLetraMinuscula() => _contrasena.Any(char.IsLower);
 
-    public bool ContieneLetraMinuscula()
-    {
-        return _contrasena.Any(char.IsLower);
-    }
+    public bool ContieneNumero() => _contrasena.Any(char.IsDigit);
 
-    public bool ContieneNumero()
-    {
-        return _contrasena.Any(char.IsDigit);
-    }
-
-    public bool ContieneUnGuion()
-    {
-        return _contrasena.Contains('_');
-    }
+    public bool ContieneUnGuion() => _contrasena.Contains('_');
 }
