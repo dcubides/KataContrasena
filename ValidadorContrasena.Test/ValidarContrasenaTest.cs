@@ -93,10 +93,12 @@ public class ValidarContrasenaTest
     
     //Segunda iteracion
     [Fact]
-    public void Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue()
+    
+    public void Si_ContrasenaTieneMasDe6Caracteres_Debe_RetornarTrue()
     {
         //Arrange
-        ValidarContrasena validarContrasena =  new ValidarContrasena("xxxxxx");
+        ValidarContrasena validarContrasena =  new ValidarContrasena("xxxxxxx");
+        validarContrasena.CantidadCaracteres = 6;
         
         //Act
         bool contrasenaValida = validarContrasena.CantidadCaracteresValida();
@@ -110,8 +112,8 @@ public class ValidarContrasenaTest
 public class ValidarContrasena
 {
     private readonly string _contrasena;
-    
-    private const int CantidadCaracteres = 8;
+
+    public int CantidadCaracteres = 8;
     
     public ValidarContrasena(string contrasena)
     { 
