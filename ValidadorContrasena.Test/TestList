@@ -15,6 +15,7 @@ Nuevos test a partir de los base
 -[x] Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue
 
 Proceso de abstraccion
--[ ] Si_ContrasenaCumpleConUnaListaDeDosReglas_Debe_RetornarTrue
+-[X] Si_ContrasenaCumpleConUnaListaDeUnaReglas_Debe_RetornarTrue
+-[X] Si_ContrasenaCumpleConUnaListaDeNReglas_Debe_RetornarTrue
 
 

@@ -124,6 +124,69 @@ public class ValidarContrasenaTest
         //Assert
         contrasenaValida.Should().BeTrue();
     }
+
+    [Fact]
+    public void Si_ContrasenaCumpleConUnaListaDeNReglas_Debe_RetornarTrue()
+    {
+        //Arrange
+        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
+        {
+            new ReglaNoEsVacia(),
+            new ReglaLongitudContrasena(8),
+            new reglaContieneLetraMayuscula(),
+            new ReglaContieneLetraMinuscula(),
+            new ReglaContieneNumero(),
+            new ReglaContieneGuionBajo()
+        };
+        
+        var validador = new ValidadorContrasena(reglas);
+        
+        //Act
+        bool contrasenaValida = validador.EsValida("xxxxxxxxx");
+        
+        //Assert
+        contrasenaValida.Should().BeTrue();
+    }
+}
+
+public class ReglaContieneGuionBajo : IReglasDeValidacion
+{
+    public bool EsValida(string xxxxxxx)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class ReglaContieneNumero : IReglasDeValidacion
+{
+    public bool EsValida(string xxxxxxx)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class ReglaContieneLetraMinuscula : IReglasDeValidacion
+{
+    public bool EsValida(string xxxxxxx)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class reglaContieneLetraMayuscula : IReglasDeValidacion
+{
+    public bool EsValida(string xxxxxxx)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class ReglaNoEsVacia : IReglasDeValidacion
+{
+    public bool EsValida(string xxxxxxx)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class ValidadorContrasena
