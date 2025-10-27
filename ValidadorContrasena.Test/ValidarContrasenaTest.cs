@@ -130,12 +130,11 @@ public class ValidadorContrasena
 {
     public ValidadorContrasena(List<IReglasDeValidacion> reglas)
     {
-        throw new NotImplementedException();
     }
 
     public bool EsValida(string xxxxxxxx)
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
 
@@ -143,12 +142,17 @@ public class ReglaLongitudContrasena : IReglasDeValidacion
 {
     public ReglaLongitudContrasena(int i)
     {
-        throw new NotImplementedException();
+    }
+
+    public bool EsValida(string xxxxxxx)
+    {
+        return true;
     }
 }
 
 public interface IReglasDeValidacion
 {
+    bool EsValida(string xxxxxxx);
 }
 
 public class ValidarContrasena
