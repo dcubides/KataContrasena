@@ -19,5 +19,7 @@ Proceso de abstraccion
 -[x] Si_ContrasenaCumpleConUnaListaDeNReglas_Debe_RetornarTrue
 ¨[x] Si_ValidacionEs2Contrasena_Debe_Validar6CaracteresLetraMayusculaLetraMinusculaYUnNumero
 ¨[x] Si_ValidacionEs3Contrasena_Debe_Validar16CaracteresLetraMayusculaLetraMinusculaYUnGuionBajo
+¨[x] Si_SolicitanValidacion2_Debe_Validar6CaracteresLetraMayusculaLetraMinusculaYUnNumero()
+¨[x] Si_SolicitanValidacion3_Debe_Validar16CaracteresLetraMayusculaLetraMinusculaYUnGuionBajo()
 
 

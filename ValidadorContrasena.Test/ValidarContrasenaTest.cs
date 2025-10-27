@@ -211,7 +211,7 @@ public class ValidarContrasenaTest
         var validador = ValidarContrasenaFactory.CrearValidadorTres();
         
         //Act
-        bool contrasenaValida = validador.EsValida("Xxxx123");
+        bool contrasenaValida = validador.EsValida("Xxxx123_xxxxxxxxxx");
         
         //Assert
         contrasenaValida.Should().BeTrue();
@@ -236,7 +236,15 @@ public static class ValidarContrasenaFactory
 
     public static ValidadorContrasena CrearValidadorTres()
     {
-        throw new NotImplementedException();
+        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>()
+        {
+            new ReglaLongitudContrasena(6),
+            new reglaContieneLetraMayuscula(),
+            new ReglaContieneLetraMinuscula(),
+            new ReglaContieneGuionBajo(),
+        };
+        
+        return new ValidadorContrasena(reglas);
     }
 }
 
