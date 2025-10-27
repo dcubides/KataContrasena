@@ -9,5 +9,5 @@ public class ReglaNoEsVacia : IReglasDeValidacion
         return !string.IsNullOrEmpty(contrasena);
     }
 
-    public string MensajeError { get; }
+    public string MensajeError => "La contraseña no puede ser vacia";
 }

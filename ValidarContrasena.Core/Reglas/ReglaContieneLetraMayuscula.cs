@@ -9,5 +9,5 @@ public class ReglaContieneLetraMayuscula : IReglasDeValidacion
         return contrasena.Any(char.IsUpper);
     }
 
-    public string MensajeError { get; }
+    public string MensajeError => "La contraseña debe contener almenos una letra mayuscula";
 }

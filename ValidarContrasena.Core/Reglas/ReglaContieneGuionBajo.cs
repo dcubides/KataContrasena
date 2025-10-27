@@ -10,5 +10,5 @@ public class ReglaContieneGuionBajo : IReglasDeValidacion
         return contrasena.Contains('_');
     }
 
-    public string MensajeError { get; }
+    public string MensajeError => "La contraseña debe contener un guion bajo";
 }

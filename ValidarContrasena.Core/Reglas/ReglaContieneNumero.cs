@@ -9,5 +9,5 @@ public class ReglaContieneNumero : IReglasDeValidacion
         return contrasena.Any(char.IsDigit);
     }
 
-    public string MensajeError { get; }
+    public string MensajeError => "La contraseña debe contener almenos un numero";
 }

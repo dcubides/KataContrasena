@@ -237,12 +237,12 @@ public class ValidarContrasenaTest
         var validador = new ValidadorContrasena(reglas);
 
         //Act
-        var contrasenaValida = validador.Validar("xxxx");
+        var contrasenaValida = validador.Validar("xxx");
 
         //Assert
         contrasenaValida.EsValida.Should().BeFalse();
-        contrasenaValida.Errores.Should().Contain("Debe contener almenos un número");
-        contrasenaValida.Errores.Should().Contain("Debe contener una letra mayuscula");
+        contrasenaValida.Errores.Should().Contain("La contraseña debe contener almenos un numero");
+        contrasenaValida.Errores.Should().Contain("La contraseña debe contener almenos una letra mayuscula");
     }
     
 }

@@ -15,5 +15,5 @@ public class ReglaLongitudContrasena : IReglasDeValidacion
         return  contrasena.Length > _cantidadCaracteres;
     }
 
-    public string MensajeError { get; }
+    public string MensajeError => $"La contraseña debe contener mas de {_cantidadCaracteres} caracteres";
 }
