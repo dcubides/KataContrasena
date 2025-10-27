@@ -47,7 +47,7 @@ public class ValidarContrasenaTest
         ValidarContrasena  validarContrasena = new ValidarContrasena("Xxxxx");
         
         //Act
-        bool contrasenaValida = ValidarContrasena.ContieneLetraMinuscula();
+        bool contrasenaValida = validarContrasena.ContieneLetraMinuscula();
         
         //Assert
         contrasenaValida.Should().BeTrue();
@@ -80,8 +80,8 @@ public class ValidarContrasena
         return _contrasena.Any(char.IsUpper);
     }
 
-    public static bool ContieneLetraMinuscula()
+    public bool ContieneLetraMinuscula()
     {
-        return true;
+        return _contrasena.Any(char.IsLower);
     }
 }
