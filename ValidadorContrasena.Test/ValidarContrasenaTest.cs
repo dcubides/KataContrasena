@@ -82,6 +82,6 @@ public class ValidarContrasena
 
     public static bool ContieneLetraMinuscula()
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
