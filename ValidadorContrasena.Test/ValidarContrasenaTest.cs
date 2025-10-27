@@ -64,6 +64,6 @@ public class ValidarContrasena
 
     public bool ContieneLetraMayuscula()
     {
-        return true;
+        return _contrasena.Any(char.IsUpper);
     }
 }
