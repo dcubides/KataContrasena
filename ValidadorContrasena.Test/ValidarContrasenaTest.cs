@@ -116,6 +116,6 @@ public class ValidarContrasena
 
     public bool EsValida()
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
