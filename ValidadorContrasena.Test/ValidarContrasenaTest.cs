@@ -20,12 +20,14 @@ public class ValidarContrasenaTest
 
 public class ValidarContrasena
 {
-    public ValidarContrasena(string xxx)
+    private readonly string _contrasena;
+    public ValidarContrasena(string contrasena)
     { 
+        _contrasena =  contrasena;
     }
 
     public bool NoEstaVacia()
     {
-        return true;
+        return !string.IsNullOrEmpty(_contrasena);
     }
 }
