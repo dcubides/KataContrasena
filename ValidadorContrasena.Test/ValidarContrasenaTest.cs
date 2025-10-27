@@ -119,7 +119,7 @@ public class ValidarContrasenaTest
         var validador = new ValidadorContrasena(reglas);
         
         //Act
-        bool contrasenaValida = validador.EsValida("xxxxxxxx");
+        bool contrasenaValida = validador.EsValida("xxxxxxxxx");
         
         //Assert
         contrasenaValida.Should().BeTrue();
@@ -128,25 +128,29 @@ public class ValidarContrasenaTest
 
 public class ValidadorContrasena
 {
+    private readonly List<IReglasDeValidacion> _reglas;
     public ValidadorContrasena(List<IReglasDeValidacion> reglas)
     {
+        _reglas =  reglas;
     }
 
-    public bool EsValida(string xxxxxxxx)
+    public bool EsValida(string contrasena)
     {
-        return true;
+        return _reglas.All(reglas => reglas.EsValida(contrasena));
     }
 }
 
 public class ReglaLongitudContrasena : IReglasDeValidacion
 {
-    public ReglaLongitudContrasena(int i)
+    private readonly int _cantidadCaracteres;
+    public ReglaLongitudContrasena(int cantidadCaracteres)
     {
+        _cantidadCaracteres = cantidadCaracteres;
     }
 
-    public bool EsValida(string xxxxxxx)
+    public bool EsValida(string contrasena)
     {
-        return true;
+        return  contrasena.Length > _cantidadCaracteres;
     }
 }
 
