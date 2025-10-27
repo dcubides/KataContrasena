@@ -1,4 +1,4 @@
-# 🔐 Kata: Validación de Contraseña (Password Validator)
+# 🔐 Kata: Validación de Contraseña
 
 Este proyecto implementa una **kata de validación de contraseñas** utilizando **.NET 9** y **Test Driven Development (TDD)**.  
 El objetivo es practicar principios de diseño limpio, refactorización progresiva y escritura de pruebas automatizadas en C#.
