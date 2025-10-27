@@ -14,7 +14,18 @@ public class ValidarContrasenaTest
         
         //Assert
         contrasenaValida.Should().BeTrue();
+    }
 
+    [Fact]
+    public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneMasDeOchoCaracteres()
+    {
+        //Arrange
+        ValidarContrasena validarContrasena = new ValidarContrasena("xxxxxxxxx");
+        //Act
+        bool contrasenaValida = validarContrasena.CantidadCaracteresValida();
+        
+        //Assert
+        contrasenaValida.Should().BeTrue();
     }
 }
 
@@ -29,5 +40,10 @@ public class ValidarContrasena
     public bool NoEstaVacia()
     {
         return !string.IsNullOrEmpty(_contrasena);
+    }
+
+    public bool CantidadCaracteresValida()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -1,5 +1,5 @@
 -[ ] Si_IngresaContrasena_Debe_RetornarTrueSiNoEsVacia
--[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneOchoCaracteres
+-[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneMasDeOchoCaracteres
 -[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMayuscula
 -[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMinuscula
 -[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero
