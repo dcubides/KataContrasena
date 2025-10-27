@@ -90,7 +90,22 @@ public class ValidarContrasenaTest
         //Assert
         contrasenaValida.Should().BeTrue();
     }
+    
+    //Segunda iteracion
+    [Fact]
+    public void Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue()
+    {
+        //Arrange
+        ValidarContrasena validarContrasena =  new ValidarContrasena("xxxxxx");
+        
+        //Act
+        bool contrasenaValida = validarContrasena.CantidadCaracteresValida();
+        //Assert
+        contrasenaValida.Should().BeTrue();
+    }
 }
+
+
 
 public class ValidarContrasena
 {

@@ -7,3 +7,8 @@
 
 Nuevos test a partir de los base
 -[x] Si_ContrasenaCumpleConTodasLasValidaciones_Debe_RetornarTrue
+
+2da Iteracion => Abstrapcion de normas
+
+-[ ] Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue
+
