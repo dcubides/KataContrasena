@@ -2,5 +2,5 @@
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneMasDeOchoCaracteres
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMayuscula
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMinuscula
--[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero
+-[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero
 -[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnGuionBajo
