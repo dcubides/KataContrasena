@@ -27,6 +27,18 @@ public class ValidarContrasenaTest
         //Assert
         contrasenaValida.Should().BeTrue();
     }
+
+    [Fact]
+    public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMayuscula()
+    {
+        //Arrange
+        ValidarContrasena validarContrasena = new ValidarContrasena("Xxxxx");
+        //Act
+        bool contrasenaValida = validarContrasena.ContieneLetraMayuscula();
+        
+        //Assert
+        contrasenaValida.Should().BeTrue();
+    }
 }
 
 public class ValidarContrasena
@@ -48,5 +60,10 @@ public class ValidarContrasena
     public bool CantidadCaracteresValida()
     {
         return _contrasena.Length > CantidadCaracteres;
+    }
+
+    public bool ContieneLetraMayuscula()
+    {
+        throw new NotImplementedException();
     }
 }
