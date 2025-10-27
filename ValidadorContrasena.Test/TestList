@@ -15,7 +15,9 @@ Nuevos test a partir de los base
 -[x] Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue
 
 Proceso de abstraccion
--[X] Si_ContrasenaCumpleConUnaListaDeUnaReglas_Debe_RetornarTrue
--[X] Si_ContrasenaCumpleConUnaListaDeNReglas_Debe_RetornarTrue
+-[x] Si_ContrasenaCumpleConUnaListaDeUnaReglas_Debe_RetornarTrue
+-[x] Si_ContrasenaCumpleConUnaListaDeNReglas_Debe_RetornarTrue
+¨[x] Si_ValidacionEs2Contrasena_Debe_Validar6CaracteresLetraMayusculaLetraMinusculaYUnNumero
+¨[x] Si_ValidacionEs3Contrasena_Debe_Validar16CaracteresLetraMayusculaLetraMinusculaYUnGuionBajo
 
 

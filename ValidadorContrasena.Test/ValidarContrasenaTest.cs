@@ -147,6 +147,27 @@ public class ValidarContrasenaTest
         //Assert
         contrasenaValida.Should().BeTrue();
     }
+
+    [Fact]
+    public void Si_ValidacionEs2Contrasena_Debe_Validar6CaracteresLetraMayusculaLetraMinusculaYUnNumero()
+    {
+        //Arrange
+        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
+        {
+            new ReglaLongitudContrasena(6),
+            new reglaContieneLetraMayuscula(),
+            new ReglaContieneLetraMinuscula(),
+            new ReglaContieneNumero(),
+        };
+        
+        var validador = new ValidadorContrasena(reglas);
+        
+        //Act
+        bool contrasenaValida = validador.EsValida("Xxxx_");
+        
+        //Assert
+        contrasenaValida.Should().BeTrue();
+    }
 }
 
 public class ReglaContieneGuionBajo : IReglasDeValidacion
