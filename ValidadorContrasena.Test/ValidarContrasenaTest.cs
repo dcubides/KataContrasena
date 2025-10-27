@@ -153,7 +153,7 @@ public class ReglaContieneGuionBajo : IReglasDeValidacion
 {
     public bool EsValida(string xxxxxxx)
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
 
@@ -161,7 +161,7 @@ public class ReglaContieneNumero : IReglasDeValidacion
 {
     public bool EsValida(string xxxxxxx)
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
 
@@ -169,7 +169,7 @@ public class ReglaContieneLetraMinuscula : IReglasDeValidacion
 {
     public bool EsValida(string xxxxxxx)
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
 
@@ -177,7 +177,7 @@ public class reglaContieneLetraMayuscula : IReglasDeValidacion
 {
     public bool EsValida(string xxxxxxx)
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
 
@@ -185,7 +185,7 @@ public class ReglaNoEsVacia : IReglasDeValidacion
 {
     public bool EsValida(string xxxxxxx)
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
 
