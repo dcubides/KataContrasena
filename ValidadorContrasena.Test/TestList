@@ -3,4 +3,4 @@
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMayuscula
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMinuscula
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero
--[ ] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnGuionBajo
+-[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnGuionBajo

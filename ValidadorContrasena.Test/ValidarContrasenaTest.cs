@@ -115,6 +115,6 @@ public class ValidarContrasena
 
     public bool ContieneUnGuion()
     {
-        return true;
+        return _contrasena.Contains('_');
     }
 }
