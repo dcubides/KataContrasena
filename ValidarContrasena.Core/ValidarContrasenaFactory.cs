@@ -1,3 +1,4 @@
+using ValidarContrasena.Core.Enums;
 using ValidarContrasena.Core.Interfaces;
 using ValidarContrasena.Core.Reglas;
 
@@ -5,6 +6,17 @@ namespace ValidarContrasena.Core;
 
 public static class ValidarContrasenaFactory
 {
+    public static ValidadorContrasena CrearValidador(TipoValidadorContrasena tipo)
+    {
+        return tipo switch
+        {
+            TipoValidadorContrasena.ValidadorUno => CrearValidadorUno(),
+            TipoValidadorContrasena.ValidadorDos => CrearValidadorDos(),
+            TipoValidadorContrasena.ValidadorTres => CrearValidadorTres(),
+            _ => throw new ArgumentException("Tipo de validador no soportado")
+        };
+    }
+
     public static ValidadorContrasena CrearValidadorUno()
     {
         List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>()

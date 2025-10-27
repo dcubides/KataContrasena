@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using ValidarContrasena.Core;
+using ValidarContrasena.Core.Enums;
 using ValidarContrasena.Core.Interfaces;
 using ValidarContrasena.Core.Reglas;
 
@@ -197,7 +198,7 @@ public class ValidarContrasenaTest
     public void Si_SolicitanValidacion2_Debe_Validar6CaracteresLetraMayusculaLetraMinusculaYUnNumero()
     {
         //Arrange
-        var validador = ValidarContrasenaFactory.CrearValidadorDos();
+        var validador = ValidarContrasenaFactory.CrearValidador(TipoValidadorContrasena.ValidadorDos);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxx123");
@@ -211,7 +212,7 @@ public class ValidarContrasenaTest
     public void Si_SolicitanValidacion3_Debe_Validar16CaracteresLetraMayusculaLetraMinusculaYUnGuionBajo()
     {
         //Arrange
-        var validador = ValidarContrasenaFactory.CrearValidadorTres();
+        var validador = ValidarContrasenaFactory.CrearValidador(TipoValidadorContrasena.ValidadorTres);
         
         //Act
         bool contrasenaValida = validador.EsValida("Xxxx123_xxxxxxxxxx");
