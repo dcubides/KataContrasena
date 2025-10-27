@@ -11,5 +11,10 @@ Nuevos test a partir de los base
 2da Iteracion => Abstrapcion de normas
 
 -[x] Si_ContrasenaTieneMasDe6Caracteres_Debe_RetornarTrue
--[ ] Si_ContrasenaTieneMasDe16Caracteres_Debe_RetornarTrue
+-[x] Si_ContrasenaTieneMasDe16Caracteres_Debe_RetornarTrue
+-[x] Si_ContrasenaTieneMasDeNCaracteres_Debe_RetornarTrue
+
+Proceso de abstraccion
+-[ ] Si_ContrasenaCumpleConUnaListaDeDosReglas_Debe_RetornarTrue
+
 
