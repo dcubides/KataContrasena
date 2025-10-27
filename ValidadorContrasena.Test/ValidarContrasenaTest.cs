@@ -220,5 +220,29 @@ public class ValidarContrasenaTest
         //Assert
         contrasenaValida.Should().BeTrue();
     }
+
+    [Fact]
+    public void Si_ContrasenaNoCumpleReglas_Debe_DevolverListaDeErrores()
+    {
+        //Arrange
+        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
+        {
+            new ReglaNoEsVacia(),
+            new ReglaLongitudContrasena(8),
+            new ReglaContieneLetraMayuscula(),
+            new ReglaContieneLetraMinuscula(),
+            new ReglaContieneNumero(),
+            new ReglaContieneGuionBajo(),
+        };
+        var validador = new ValidadorContrasena(reglas);
+
+        //Act
+        var contrasenaValida = validador.Validar("xxxx");
+
+        //Assert
+        contrasenaValida.EsValida.Should().BeFalse();
+        contrasenaValida.Errores.Should().Contain("Debe contener almenos un número");
+        contrasenaValida.Errores.Should().Contain("Debe contener una letra mayuscula");
+    }
     
 }

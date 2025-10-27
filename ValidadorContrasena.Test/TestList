@@ -22,4 +22,8 @@ Proceso de abstraccion
 ¨[x] Si_SolicitanValidacion2_Debe_Validar6CaracteresLetraMayusculaLetraMinusculaYUnNumero()
 ¨[x] Si_SolicitanValidacion3_Debe_Validar16CaracteresLetraMayusculaLetraMinusculaYUnGuionBajo()
 
+Iteracion 3 manejo de errores
+-[ ] Si_ContrasenaNoCumpleReglas_Debe_DevolverListaDeErrores
+
+
 

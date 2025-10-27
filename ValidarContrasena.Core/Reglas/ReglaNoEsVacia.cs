@@ -8,4 +8,6 @@ public class ReglaNoEsVacia : IReglasDeValidacion
     {
         return !string.IsNullOrEmpty(contrasena);
     }
+
+    public string MensajeError { get; }
 }

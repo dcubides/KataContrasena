@@ -9,4 +9,6 @@ public class ReglaContieneGuionBajo : IReglasDeValidacion
     {
         return contrasena.Contains('_');
     }
+
+    public string MensajeError { get; }
 }

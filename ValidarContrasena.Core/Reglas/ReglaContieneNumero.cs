@@ -8,4 +8,6 @@ public class ReglaContieneNumero : IReglasDeValidacion
     {
         return contrasena.Any(char.IsDigit);
     }
+
+    public string MensajeError { get; }
 }

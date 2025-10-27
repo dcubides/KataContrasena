@@ -2,5 +2,6 @@ namespace ValidarContrasena.Core.Interfaces;
 
 public interface IReglasDeValidacion
 {
-    bool EsValida(string xxxxxxx);
+    bool EsValida(string contrasena);
+    string MensajeError { get; }
 }

@@ -14,4 +14,25 @@ public class ValidadorContrasena
     {
         return _reglas.All(reglas => reglas.EsValida(contrasena));
     }
+
+    public ResultadoValidacion Validar(string xxxx)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class ResultadoValidacion
+{
+    public bool EsValida => !Errores.Any();
+    public List<string> Errores { get; }
+
+    public ResultadoValidacion()
+    {
+        Errores = new List<string>();
+    }
+
+    public void AgregarError(string mensaje)
+    {
+        Errores.Add(mensaje);
+    }
 }

@@ -14,4 +14,6 @@ public class ReglaLongitudContrasena : IReglasDeValidacion
     {
         return  contrasena.Length > _cantidadCaracteres;
     }
+
+    public string MensajeError { get; }
 }

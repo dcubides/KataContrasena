@@ -8,4 +8,6 @@ public class ReglaContieneLetraMinuscula : IReglasDeValidacion
     {
         return contrasena.Any(char.IsLower);
     }
+
+    public string MensajeError { get; }
 }

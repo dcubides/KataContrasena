@@ -8,4 +8,6 @@ public class ReglaContieneLetraMayuscula : IReglasDeValidacion
     {
         return contrasena.Any(char.IsUpper);
     }
+
+    public string MensajeError { get; }
 }
