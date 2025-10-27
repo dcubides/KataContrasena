@@ -100,6 +100,6 @@ public class ValidarContrasena
 
     public bool ContieneNumero()
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
