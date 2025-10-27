@@ -204,6 +204,19 @@ public class ValidarContrasenaTest
 
     }
     
+    [Fact]
+    public void Si_SolicitanValidacion3_Debe_Validar16CaracteresLetraMayusculaLetraMinusculaYUnGuionBajo()
+    {
+        //Arrange
+        var validador = ValidarContrasenaFactory.CrearValidadorTres();
+        
+        //Act
+        bool contrasenaValida = validador.EsValida("Xxxx123");
+        
+        //Assert
+        contrasenaValida.Should().BeTrue();
+    }
+    
 }
 
 public static class ValidarContrasenaFactory
@@ -219,6 +232,11 @@ public static class ValidarContrasenaFactory
         };
         
         return new ValidadorContrasena(reglas);
+    }
+
+    public static ValidadorContrasena CrearValidadorTres()
+    {
+        throw new NotImplementedException();
     }
 }
 
