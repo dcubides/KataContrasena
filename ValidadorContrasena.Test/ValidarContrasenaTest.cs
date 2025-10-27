@@ -57,7 +57,7 @@ public class ValidarContrasenaTest
     public void Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero()
     {
         //Arrange
-        ValidarContrasena validarContrasena = new ValidarContrasena("Xxxxx");
+        ValidarContrasena validarContrasena = new ValidarContrasena("Xxxx1");
         //Act
         bool contrasenaValida = validarContrasena.ContieneNumero();
         
@@ -100,6 +100,6 @@ public class ValidarContrasena
 
     public bool ContieneNumero()
     {
-        return true;
+        return _contrasena.Any(char.IsDigit);
     }
 }
