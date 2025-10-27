@@ -75,7 +75,18 @@ public class ValidarContrasenaTest
         //Arrange
 
         //Act
-        bool contrasenaValida = validarContrasena.ContieneUnGuion();
+        bool contrasenaValida = validarContrasena.ContieneUnGuionBajo();
+        //Assert
+        contrasenaValida.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Si_ContrasenaCumpleConTodasLasValidaciones_Debe_RetornarTrue()
+    {
+        //Arrange
+        
+        //Act
+        bool contrasenaValida = validarContrasena.EsValida();
         //Assert
         contrasenaValida.Should().BeTrue();
     }
@@ -101,5 +112,10 @@ public class ValidarContrasena
 
     public bool ContieneNumero() => _contrasena.Any(char.IsDigit);
 
-    public bool ContieneUnGuion() => _contrasena.Contains('_');
+    public bool ContieneUnGuionBajo() => _contrasena.Contains('_');
+
+    public bool EsValida()
+    {
+        throw new NotImplementedException();
+    }
 }

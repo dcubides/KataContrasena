@@ -4,3 +4,6 @@
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnaLetraMinuscula
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnNumero
 -[x] Si_IngresaContrasena_Debe_RetornarTrueSiContieneUnGuionBajo
+
+Nuevos test a partir de los base
+-[x] Si_ContrasenaCumpleConTodasLasValidaciones_Debe_RetornarTrue
