@@ -116,6 +116,11 @@ public class ValidarContrasena
 
     public bool EsValida()
     {
-        return true;
+        return  NoEstaVacia() &&
+                CantidadCaracteresValida() &&
+                ContieneLetraMayuscula() &&
+                ContieneLetraMinuscula() &&
+                ContieneNumero() &&
+                ContieneUnGuionBajo();
     }
 }
