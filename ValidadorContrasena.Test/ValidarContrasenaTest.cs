@@ -1,4 +1,7 @@
 ﻿using FluentAssertions;
+using ValidarContrasena.Core;
+using ValidarContrasena.Core.Interfaces;
+using ValidarContrasena.Core.Reglas;
 
 namespace KataContrasena.Test;
 
@@ -133,7 +136,7 @@ public class ValidarContrasenaTest
         {
             new ReglaNoEsVacia(),
             new ReglaLongitudContrasena(8),
-            new reglaContieneLetraMayuscula(),
+            new ReglaContieneLetraMayuscula(),
             new ReglaContieneLetraMinuscula(),
             new ReglaContieneNumero(),
             new ReglaContieneGuionBajo()
@@ -155,7 +158,7 @@ public class ValidarContrasenaTest
         List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
         {
             new ReglaLongitudContrasena(6),
-            new reglaContieneLetraMayuscula(),
+            new ReglaContieneLetraMayuscula(),
             new ReglaContieneLetraMinuscula(),
             new ReglaContieneNumero(),
         };
@@ -176,7 +179,7 @@ public class ValidarContrasenaTest
         List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>
         {
             new ReglaLongitudContrasena(6),
-            new reglaContieneLetraMayuscula(),
+            new ReglaContieneLetraMayuscula(),
             new ReglaContieneLetraMinuscula(),
             new ReglaContieneGuionBajo(),
         };
@@ -217,139 +220,4 @@ public class ValidarContrasenaTest
         contrasenaValida.Should().BeTrue();
     }
     
-}
-
-public static class ValidarContrasenaFactory
-{
-    public static ValidadorContrasena CrearValidadorDos()
-    {
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>()
-        {
-            new ReglaLongitudContrasena(6),
-            new reglaContieneLetraMayuscula(),
-            new ReglaContieneLetraMinuscula(),
-            new ReglaContieneNumero(),
-        };
-        
-        return new ValidadorContrasena(reglas);
-    }
-
-    public static ValidadorContrasena CrearValidadorTres()
-    {
-        List<IReglasDeValidacion> reglas = new List<IReglasDeValidacion>()
-        {
-            new ReglaLongitudContrasena(6),
-            new reglaContieneLetraMayuscula(),
-            new ReglaContieneLetraMinuscula(),
-            new ReglaContieneGuionBajo(),
-        };
-        
-        return new ValidadorContrasena(reglas);
-    }
-}
-
-public class ReglaContieneGuionBajo : IReglasDeValidacion
-{
-    public bool EsValida(string contrasena)
-    {
-        return contrasena.Contains('_');
-    }
-}
-
-public class ReglaContieneNumero : IReglasDeValidacion
-{
-    public bool EsValida(string contrasena)
-    {
-        return contrasena.Any(char.IsDigit);
-    }
-}
-
-public class ReglaContieneLetraMinuscula : IReglasDeValidacion
-{
-    public bool EsValida(string contrasena)
-    {
-        return contrasena.Any(char.IsLower);
-    }
-}
-
-public class reglaContieneLetraMayuscula : IReglasDeValidacion
-{
-    public bool EsValida(string contrasena)
-    {
-        return contrasena.Any(char.IsUpper);
-    }
-}
-
-public class ReglaNoEsVacia : IReglasDeValidacion
-{
-    public bool EsValida(string contrasena)
-    {
-        return !string.IsNullOrEmpty(contrasena);
-    }
-}
-
-public class ValidadorContrasena
-{
-    private readonly List<IReglasDeValidacion> _reglas;
-    public ValidadorContrasena(List<IReglasDeValidacion> reglas)
-    {
-        _reglas =  reglas;
-    }
-
-    public bool EsValida(string contrasena)
-    {
-        return _reglas.All(reglas => reglas.EsValida(contrasena));
-    }
-}
-
-public class ReglaLongitudContrasena : IReglasDeValidacion
-{
-    private readonly int _cantidadCaracteres;
-    public ReglaLongitudContrasena(int cantidadCaracteres)
-    {
-        _cantidadCaracteres = cantidadCaracteres;
-    }
-
-    public bool EsValida(string contrasena)
-    {
-        return  contrasena.Length > _cantidadCaracteres;
-    }
-}
-
-public interface IReglasDeValidacion
-{
-    bool EsValida(string xxxxxxx);
-}
-
-public class ValidarContrasena
-{
-    private readonly string _contrasena;
-
-    public int CantidadCaracteres = 8;
-    
-    public ValidarContrasena(string contrasena)
-    { 
-        _contrasena =  contrasena;
-    }
-
-    public bool NoEstaVacia() => !string.IsNullOrEmpty(_contrasena);
-    public bool CantidadCaracteresValida() => _contrasena.Length > CantidadCaracteres;
-
-    public bool ContieneLetraMayuscula() => _contrasena.Any(char.IsUpper);
-
-    public bool ContieneLetraMinuscula() => _contrasena.Any(char.IsLower);
-
-    public bool ContieneNumero() => _contrasena.Any(char.IsDigit);
-
-    public bool ContieneUnGuionBajo() => _contrasena.Contains('_');
-
-    public bool EsValida()
-    {
-        return  NoEstaVacia() &&
-                CantidadCaracteresValida() &&
-                ContieneLetraMayuscula() &&
-                ContieneLetraMinuscula() &&
-                ContieneNumero() &&
-                ContieneUnGuionBajo();
-    }
 }

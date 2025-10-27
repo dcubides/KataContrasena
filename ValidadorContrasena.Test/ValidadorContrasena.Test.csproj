@@ -20,4 +20,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ValidarContrasena.Core\ValidarContrasena.Core.csproj" />
+    </ItemGroup>
+
 </Project>
