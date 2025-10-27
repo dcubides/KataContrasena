@@ -142,7 +142,7 @@ public class ValidarContrasenaTest
         var validador = new ValidadorContrasena(reglas);
         
         //Act
-        bool contrasenaValida = validador.EsValida("xxxxxxxxx");
+        bool contrasenaValida = validador.EsValida("Xxxx1234_");
         
         //Assert
         contrasenaValida.Should().BeTrue();
@@ -151,41 +151,41 @@ public class ValidarContrasenaTest
 
 public class ReglaContieneGuionBajo : IReglasDeValidacion
 {
-    public bool EsValida(string xxxxxxx)
+    public bool EsValida(string contrasena)
     {
-        return true;
+        return contrasena.Contains('_');
     }
 }
 
 public class ReglaContieneNumero : IReglasDeValidacion
 {
-    public bool EsValida(string xxxxxxx)
+    public bool EsValida(string contrasena)
     {
-        return true;
+        return contrasena.Any(char.IsDigit);
     }
 }
 
 public class ReglaContieneLetraMinuscula : IReglasDeValidacion
 {
-    public bool EsValida(string xxxxxxx)
+    public bool EsValida(string contrasena)
     {
-        return true;
+        return contrasena.Any(char.IsLower);
     }
 }
 
 public class reglaContieneLetraMayuscula : IReglasDeValidacion
 {
-    public bool EsValida(string xxxxxxx)
+    public bool EsValida(string contrasena)
     {
-        return true;
+        return contrasena.Any(char.IsUpper);
     }
 }
 
 public class ReglaNoEsVacia : IReglasDeValidacion
 {
-    public bool EsValida(string xxxxxxx)
+    public bool EsValida(string contrasena)
     {
-        return true;
+        return !string.IsNullOrEmpty(contrasena);
     }
 }
 
