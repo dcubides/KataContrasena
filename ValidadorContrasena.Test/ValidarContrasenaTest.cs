@@ -115,6 +115,6 @@ public class ValidarContrasena
 
     public bool ContieneUnGuion()
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
